@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+#wallpaper{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/images/bgd-kali.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#openCmd{
+    width: 2.3%;
+    height: 5%;
+    left: 12.9%;
+    background-color: transparent;
+    position: fixed;
+    cursor: pointer;
+}
+
+#cmd{
+    background-color: rgba(50, 50, 50, 0.85);
+    width: 35%;
+    height: 50%;
+    display: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+#cmdHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+#cmdLogo{
+    margin: 0 5px;
+}
+
+#cmdPath{
+    color: white;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+#buttons{
+    display: flex;
+    align-items: center;
+}
+
+#close{
+    background-color: rgb(31, 31, 182);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: inset 0px 0px 4px black;
+}
+
+#max, #min{
+    height: 15px;
+    width: 15px;
+    background-color: rgb(50, 50, 50);
+    margin: 5px 2px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 4px black;
+    cursor: pointer;
+}
+
+main p{
+    color:white;
+    margin: 1px 10px;
+}
+
+main{
+    height: 100%;
+}
+
+#cmdInput{
+    box-sizing: border-box;
+    width: 96%;
+    height: auto;
+    margin: 0 10px;
+    margin-right: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    overflow: hidden;
+    resize: none;
+    display: block;
+}
+
+
+

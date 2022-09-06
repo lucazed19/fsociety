@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>FSOCIETY</title>
+</head>
+<body>
+    <div id="wallpaper">
+        <button id="openCmd" onclick="openCmd()"></button>
+        <div id="cmd">
+            <div id="cmdHeader">
+                <img src="/images/cmd.png" alt="cmd" height="25px" id="cmdLogo">
+                <h4 id="cmdPath">root@~~</h4>
+                <div id="buttons">
+                    <button id="min" onclick="minCmd()"></button>
+                    <button id="max" onclick="maxCmd()"></button>
+                    <button id="close" onclick="closeCmd()">X</button>
+                </div>
+            </div>
+            <main id="main">
+                <p id="text"> </p>
+                
+            </main>
+        </div>
+    </div>
+</body>
+</html>
