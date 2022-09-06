@@ -6,7 +6,7 @@ function openCmd(){
         escrever(text1, cmdText)
     }
 }
-let text1 = "FSOCIETY"
+let text1 = "FSOCIETY - Salve"
 
 // FECHAR CMD
 function closeCmd(){
@@ -104,14 +104,13 @@ function limpar(){
       for (let i = 0; paragrafos[i]; i++) {
           paragrafos[i].innerText = "";
         }
-        let inputs = document.querySelector(".cmdInput")
+        let inputs = document.querySelector("#cmdInput")
         inputs.parentNode.removeChild(inputs);    
 }
     
 // ADICIONAR ELEMENTO
 function addElement(){
         let newInput = document.createElement("textarea");
-        // newInput.type = "text";
         newInput.id = "cmdInput"
         newInput.rows = 19;
         newInput.style.height="auto";
@@ -123,7 +122,16 @@ function addElement(){
 document.getElementById("main").addEventListener("keypress", function (e){
     if(e.key == "Enter"){
         let textarea = document.getElementById("cmdInput")
-        textarea.style
+        textarea.style.display = "none";
+
+        let newParagrafo = document.createElement("p");
+        newParagrafo.className = "texto"
+        document.getElementById("main").appendChild(newParagrafo);
+        const texto = textarea.innerText;
+        document.createTextNode(texto);
+
+        
+
     }
 })
 
