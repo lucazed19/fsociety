@@ -12,12 +12,25 @@ function openCmd(){
 // FECHAR CMD
 function closeCmd(){
     let cmd = document.getElementById("cmd");
+    let cmd2 = document.getElementById("cmd2");
     cmd.style.display = "none"
+    cmd2.style.display = "none"
     maxiCmd=1;
     maxCmd();
     cmd.style.top="50px";
     cmd.style.left="50px";
     limpar();
+}
+
+function closeCmd2(){
+    let cmd = document.getElementById("cmd2");
+    cmd.style.display = "none"
+    maxiCmd=1;
+    maxCmd();
+    cmd.style.top="20px";
+    cmd.style.left="unset";
+    cmd.style.right="50px"
+    falhou();
 }
 
 // MAXIMIZAR CMD
@@ -40,11 +53,38 @@ function maxCmd(){
         maxiCmd = 0;
     }
 }
+let maxiCmd2 = 0;
+function maxCmd2(){
+    let cmd = document.getElementById("cmd2");
+    if (maxiCmd2 == 0){
+        cmd.style.height = "100%";
+        cmd.style.width = "100%";
+        cmd.style.borderRadius = 0;
+        cmd.style.top=0;
+        cmd.style.left=0;
+        maxiCmd2 = 1;
+    }else if(maxiCmd2 == 1){
+        cmd.style.height = "100%";
+        cmd.style.width = "50%";
+        cmd.style.borderRadius = "15px";
+        cmd.style.top="20px";
+        cmd.style.left= "unset";
+        cmd.style.right="50px";
+        maxiCmd2 = 0;
+    }
+}
+
 
 // MINIMIZAR CMD
 function minCmd(){
     document.getElementById("cmd").style.display = "none"
+    document.getElementById("cmd2").style.display = "none"
 }
+function minCmd2(){
+    document.getElementById("cmd2").style.display = "none"
+    falhou();
+}
+
 
 
 // MOVER CMD
@@ -82,6 +122,7 @@ function dragMouseDown(e) {
   }
 }
 dragCmd(document.getElementById("cmd"));
+dragCmd(document.getElementById("cmd2"));
 
 // LIMPAR CMD
 function limpar(){
@@ -192,6 +233,8 @@ function hackingCmdPT1(){
     addParagrafo("text7")
     addParagrafo("text8")
     addParagrafo("text9")
+    addParagrafo("text10")
+    addParagrafo("text11")
 
     if ( document.getElementById("inputTexto1").innerHTML == 1){
         escrever("SEJA BEM-VINDO!!", "text3")
@@ -210,6 +253,9 @@ function hackingCmdPT1(){
                     i++
                 }else{
                     clearInterval(init)
+                    document.getElementById("cmd2").style.display = "block"
+                    escrever("TERMINAL INICIADO","text10")
+                    escrever("SE FECHAR OU MINIMIZAR O TERMINAL VOCÊ FALHARÁ","text11")
                 }            
             },1000)
         }, 13200)
@@ -231,6 +277,9 @@ function hackingCmdPT1(){
                     i++
                 }else{
                     clearInterval(init)
+                    document.getElementById("cmd2").style.display = "block"
+                    escrever("TERMINAL INICIADO","text10")
+                    escrever("SE FECHAR OU MINIMIZAR O TERMINAL VOCÊ FALHARÁ","text11")
                 }            
             },1000)
         }, 15100)
@@ -240,5 +289,16 @@ function hackingCmdPT1(){
 
 function hackingCmdPT2(){
     
+}
+
+function falhou(){
+    addParagrafo("text1000")
+    addParagrafo("text1001")
+    addParagrafo("text1002")
+    addParagrafo("text1003")
+    escrever("--------------------------------------------","text1000")
+    escrever("VOCÊ FECHOU O TERMINAL E PERDEU O PROGRESSO","text1001")
+    escreverAtrasasdo("text1002",4500,"     INICIE O PROCESSO NOVAMENTE")
+    escrever("--------------------------------------------","text1003")
 }
 

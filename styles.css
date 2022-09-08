@@ -41,29 +41,41 @@ body{
     z-index: 0;
 }
 
-#cmdHeader{
+#cmd2{
+    background-color: rgba(50, 50, 50, 0.85);
+    width: 50%;
+    height: 100%;
+    display: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    z-index: 1;
+}
+
+.cmdHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: move;
 }
 
-#cmdLogo{
+.cmdLogo{
     margin: 0 5px;
 }
 
-#cmdPath{
+.cmdPath{
     color: white;
     font-size: 15px;
     font-weight: lighter;
 }
 
-#buttons{
+.buttons{
     display: flex;
     align-items: center;
 }
 
-#close{
+#close, #close2{
     background-color: rgb(31, 31, 182);
     height: 20px;
     width: 20px;
@@ -74,7 +86,7 @@ body{
     box-shadow: inset 0px 0px 4px black;
 }
 
-#max, #min{
+#max, #min, #max2, #min2{
     height: 15px;
     width: 15px;
     background-color: rgb(50, 50, 50);
@@ -110,5 +122,15 @@ main{
     font-family:monospace;
     font-size: 15px;
 }
+
+#text11{
+    color: yellow;
+}
+
+#text1000, #text1001, #text1002, #text1003{
+    color: red;
+}
+
+
 
 
