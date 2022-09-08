@@ -3,7 +3,7 @@ function openCmd(){
     document.getElementById("cmd").style.display = "block";
     let texto = document.getElementById("text");    
     if (texto.innerText == "") {
-        hackingCmdPT1();
+        hackingCmdPT0();
     }
     focar();
 }
@@ -83,7 +83,25 @@ function dragMouseDown(e) {
 }
 dragCmd(document.getElementById("cmd"));
 
-// ESCREVER TEXTO CMD
+// LIMPAR CMD
+function limpar(){
+    let limparParagrafos = document.querySelectorAll("p");
+    for (let i = 0; limparParagrafos[i]; i++) {
+        limparParagrafos[i].innerText = "";
+        if( i > 0){
+            limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
+        }
+    }
+    for (let i = 0; paragrafos[i]; i++){
+        paragrafos.pop()
+    }
+    let inputs = document.querySelector("#cmdInput")
+    inputs.parentNode.removeChild(inputs);
+    i = 0;
+
+}
+
+// ESCREVER AUTOMÁTICO NO TEXTO CMD
 function escrever(str, el,){
     var char = str.split('').reverse();
     var typer = setInterval(function() {
@@ -93,14 +111,11 @@ function escrever(str, el,){
     }, 100);
 }
 
-  // LIMPAR CMD
-function limpar(){
-      let paragrafos = document.querySelectorAll("p");
-      for (let i = 0; paragrafos[i]; i++) {
-          paragrafos[i].innerText = "";
-        }
-    let inputs = document.querySelector("#cmdInput")
-    inputs.parentNode.removeChild(inputs);    
+function escreverAtrasasdo(id, tempo, texto){
+    let init = setInterval(function(){
+        escrever(texto,document.getElementById(id))
+        clearInterval(init)
+    }, tempo)
 }
     
 // ADICIONAR INPUT
@@ -114,6 +129,11 @@ function addInput(){
         parent.appendChild(newInput);
 }
 
+// FOCAR NO INPUT
+function focar(){
+    document.getElementById("cmdInput").focus();
+}
+
 // ADICIONAR PARÀGRAFO
 function addParagrafo(id){
     let newParagrafo = document.createElement("p")
@@ -122,19 +142,18 @@ function addParagrafo(id){
     parent.appendChild(newParagrafo);
 }
 
-function focar(){
-    document.getElementById("cmdInput").focus();
-}
 
-//TRANSFORMAR EM TEXTO
+//TRANSFORMAR EM TEXTO E CHAMAR O RESTO DO TEXTO COM O ENTER
 let paragrafos = []
 let i = 0;
-document.getElementById("main").addEventListener("keypress", function (e){
+document.getElementById("main").addEventListener("keydown", function (e){
     if(e.key == "Enter" && document.getElementById("cmdInput").value != ""){
+        // PEGAR TEXTO DIGITADO
         let textinput = document.getElementById("cmdInput")
         let texto = textinput.value;
         textinput.style.display = "none";
 
+        // CONTADOR PARA AUMENTAR AS IDS SOZINHA E CRIAR PARÁGRAFO
         i++;
         paragrafos.push(i);
         let newParagrafo = document.createElement("p");
@@ -144,19 +163,42 @@ document.getElementById("main").addEventListener("keypress", function (e){
         document.getElementById("main").appendChild(newParagrafo);
         let inputs = document.querySelector("#cmdInput")
         inputs.parentNode.removeChild(inputs);
-        
+
+
+        if (paragrafos.length == 1){
+            hackingCmdPT1()
+        } else if (paragrafos.length == 2){
+            hackingCmdPT2()
+        }
     }
 })
 
 
 // PARTES DO CMD
-function hackingCmdPT1(){
+function hackingCmdPT0(){
     escrever("FSOCIETY", document.getElementById("text"));
-    addParagrafo("text2");
-    escrever("DIGITE 1 PARA COMEÇAR", document.getElementById("text2"));
+    addParagrafo("text2")
+    escreverAtrasasdo("text2", 900, "DIGITE 1 PARA COMEÇARMOS!")
     addInput();
     focar()
+}
+
+function hackingCmdPT1(){
     addParagrafo("text3");
-    escrever(`${paragrafos.length}`,document.getElementById("text3"))
+    if ( document.getElementById("inputTexto1").innerHTML == 1){
+        escrever("SEJA BEM-VINDO!!", document.getElementById("text3"))
+        addParagrafo("text4")
+        escreverAtrasasdo("text4", 1700,"SUA MISSÃO SERÁ INVADIR O FBI E COPIAR ALGUNS ARQUIVOS")
+    }else{
+        escrever("COMEÇAREMOS MESMO ASSIM, BOA SORTE!!", document.getElementById("text3"))
+        addParagrafo("text4")
+        
+    }
     
 }
+
+function hackingCmdPT2(){
+    addParagrafo("text4");
+    escrever(`${paragrafos.length}`,document.getElementById("text4"))
+}
+
