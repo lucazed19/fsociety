@@ -102,18 +102,18 @@ function limpar(){
 }
 
 // ESCREVER AUTOMÁTICO NO TEXTO CMD
-function escrever(str, el,){
+function escrever(str, id,){
     var char = str.split('').reverse();
     var typer = setInterval(function() {
       if (!char.length) return clearInterval(typer);
       var next = char.pop();
-      el.innerHTML += next;
+      document.getElementById(id).innerHTML += next;
     }, 100);
 }
 
 function escreverAtrasasdo(id, tempo, texto){
     let init = setInterval(function(){
-        escrever(texto,document.getElementById(id))
+        escrever(texto,id)
         clearInterval(init)
     }, tempo)
 }
@@ -138,6 +138,7 @@ function focar(){
 function addParagrafo(id){
     let newParagrafo = document.createElement("p")
     newParagrafo.id = id;
+    newParagrafo.className = "texto";
     let parent = document.getElementById("main")
     parent.appendChild(newParagrafo);
 }
@@ -176,7 +177,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
 
 // PARTES DO CMD
 function hackingCmdPT0(){
-    escrever("FSOCIETY", document.getElementById("text"));
+    escrever("FSOCIETY", "text");
     addParagrafo("text2")
     escreverAtrasasdo("text2", 900, "DIGITE 1 PARA COMEÇARMOS!")
     addInput();
@@ -185,20 +186,59 @@ function hackingCmdPT0(){
 
 function hackingCmdPT1(){
     addParagrafo("text3");
+    addParagrafo("text4")
+    addParagrafo("text5")
+    addParagrafo("text6")
+    addParagrafo("text7")
+    addParagrafo("text8")
+    addParagrafo("text9")
+
     if ( document.getElementById("inputTexto1").innerHTML == 1){
-        escrever("SEJA BEM-VINDO!!", document.getElementById("text3"))
-        addParagrafo("text4")
+        escrever("SEJA BEM-VINDO!!", "text3")
         escreverAtrasasdo("text4", 1700,"SUA MISSÃO SERÁ INVADIR O FBI E COPIAR ALGUNS ARQUIVOS")
-    }else{
-        escrever("COMEÇAREMOS MESMO ASSIM, BOA SORTE!!", document.getElementById("text3"))
-        addParagrafo("text4")
+        escreverAtrasasdo("text5", 7100,"COMEÇAREMOS EM")
+        escreverAtrasasdo("text6", 8600,"3")
+        escreverAtrasasdo("text7", 9600,"2")
+        escreverAtrasasdo("text8", 10600,"1")
+        escreverAtrasasdo("text9", 11600,"ABRINDO TERMINAL")
+        setTimeout(function(){
+            let i = 0
+            let init = setInterval(function(){
+                if( i <= 3 ){
+                    let el = document.getElementById("text9")
+                    el.innerHTML += "."
+                    i++
+                }else{
+                    clearInterval(init)
+                }            
+            },1000)
+        }, 13200)
         
+    }else{
+        escrever("COMEÇAREMOS MESMO ASSIM, BOA SORTE!!", "text3")
+        escreverAtrasasdo("text4", 3700,"SUA MISSÃO SERÁ INVADIR O FBI E COPIAR ALGUNS ARQUIVOS")
+        escreverAtrasasdo("text5", 9100,"COMEÇAREMOS EM")
+        escreverAtrasasdo("text6", 10500,"3")
+        escreverAtrasasdo("text7", 11500,"2")
+        escreverAtrasasdo("text8", 12500,"1")
+        escreverAtrasasdo("text9", 13500,"ABRINDO TERMINAL")
+        setTimeout(function(){
+            let i = 0
+            let init = setInterval(function(){
+                if( i <= 3 ){
+                    let el = document.getElementById("text9")
+                    el.innerHTML += "."
+                    i++
+                }else{
+                    clearInterval(init)
+                }            
+            },1000)
+        }, 15100)
     }
     
 }
 
 function hackingCmdPT2(){
-    addParagrafo("text4");
-    escrever(`${paragrafos.length}`,document.getElementById("text4"))
+    
 }
 

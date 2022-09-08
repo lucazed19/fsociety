@@ -38,6 +38,7 @@ body{
     position: absolute;
     top: 50px;
     left: 50px;
+    z-index: 0;
 }
 
 #cmdHeader{
@@ -83,11 +84,6 @@ body{
     cursor: pointer;
 }
 
-main p{
-    color:white;
-    margin: 1px 10px;
-}
-
 main{
     height: 100%;
 }
@@ -110,6 +106,9 @@ main{
 
 .texto{
     color: white;
+    margin: 1px 10px;
+    font-family:monospace;
+    font-size: 15px;
 }
 
 
