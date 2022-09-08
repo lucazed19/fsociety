@@ -94,8 +94,9 @@ main{
 
 #cmdInput{
     box-sizing: border-box;
-    width: 96%;
+    width: 98%;
     height: auto;
+    padding-top: 2px;
     margin: 0 10px;
     margin-right: 0;
     border: none;
@@ -103,8 +104,8 @@ main{
     background: transparent;
     color: white;
     overflow: hidden;
-    resize: none;
     display: block;
+    font-size: 13px;
 }
 
 .texto{

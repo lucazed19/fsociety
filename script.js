@@ -3,10 +3,11 @@ function openCmd(){
     document.getElementById("cmd").style.display = "block";
     let texto = document.getElementById("text");    
     if (texto.innerText == "") {
-        escrever(text1, cmdText)
+        hackingCmdPT1();
     }
+    focar();
 }
-let text1 = "FSOCIETY - Salve"
+
 
 // FECHAR CMD
 function closeCmd(){
@@ -82,20 +83,14 @@ function dragMouseDown(e) {
 }
 dragCmd(document.getElementById("cmd"));
 
-// TEXTO CMD
-let cmdText = document.getElementById("text");
-
-function escrever(str, el){
+// ESCREVER TEXTO CMD
+function escrever(str, el,){
     var char = str.split('').reverse();
     var typer = setInterval(function() {
       if (!char.length) return clearInterval(typer);
       var next = char.pop();
       el.innerHTML += next;
-       
     }, 100);
-    
-    addElement();
-        
 }
 
   // LIMPAR CMD
@@ -104,36 +99,64 @@ function limpar(){
       for (let i = 0; paragrafos[i]; i++) {
           paragrafos[i].innerText = "";
         }
-        let inputs = document.querySelector("#cmdInput")
-        inputs.parentNode.removeChild(inputs);    
+    let inputs = document.querySelector("#cmdInput")
+    inputs.parentNode.removeChild(inputs);    
 }
     
-// ADICIONAR ELEMENTO
-function addElement(){
-        let newInput = document.createElement("textarea");
+// ADICIONAR INPUT
+function addInput(){
+        let newInput = document.createElement("input");
         newInput.id = "cmdInput"
-        newInput.rows = 19;
+        newInput.type = "text"
+        newInput.autocomplete = "off";
         newInput.style.height="auto";
         let parent = document.getElementById("main")
         parent.appendChild(newInput);
 }
 
+// ADICIONAR PARÀGRAFO
+function addParagrafo(id){
+    let newParagrafo = document.createElement("p")
+    newParagrafo.id = id;
+    let parent = document.getElementById("main")
+    parent.appendChild(newParagrafo);
+}
+
+function focar(){
+    document.getElementById("cmdInput").focus();
+}
+
 //TRANSFORMAR EM TEXTO
+let paragrafos = []
+let i = 0;
 document.getElementById("main").addEventListener("keypress", function (e){
-    if(e.key == "Enter"){
-        let textarea = document.getElementById("cmdInput")
-        textarea.style.display = "none";
+    if(e.key == "Enter" && document.getElementById("cmdInput").value != ""){
+        let textinput = document.getElementById("cmdInput")
+        let texto = textinput.value;
+        textinput.style.display = "none";
 
+        i++;
+        paragrafos.push(i);
         let newParagrafo = document.createElement("p");
+        newParagrafo.id = `inputTexto${paragrafos.length}`
         newParagrafo.className = "texto"
+        newParagrafo.innerHTML = texto;
         document.getElementById("main").appendChild(newParagrafo);
-        const texto = textarea.innerText;
-        document.createTextNode(texto);
-
+        let inputs = document.querySelector("#cmdInput")
+        inputs.parentNode.removeChild(inputs);
         
-
     }
 })
 
 
-
+// PARTES DO CMD
+function hackingCmdPT1(){
+    escrever("FSOCIETY", document.getElementById("text"));
+    addParagrafo("text2");
+    escrever("DIGITE 1 PARA COMEÇAR", document.getElementById("text2"));
+    addInput();
+    focar()
+    addParagrafo("text3");
+    escrever(`${paragrafos.length}`,document.getElementById("text3"))
+    
+}
