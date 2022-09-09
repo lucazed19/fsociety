@@ -37,12 +37,14 @@ function closeCmd2(){
 let maxiCmd = 0;
 function maxCmd(){
     let cmd = document.getElementById("cmd");
+    let main = document.getElementsByTagName("main")
     if (maxiCmd == 0){
         cmd.style.height = "100%";
         cmd.style.width = "100%";
         cmd.style.borderRadius = 0;
         cmd.style.top=0;
         cmd.style.left=0;
+        main[0].style.height="93%"
         maxiCmd = 1;
     }else if(maxiCmd == 1){
         cmd.style.height = "50%";
@@ -50,6 +52,7 @@ function maxCmd(){
         cmd.style.borderRadius = "15px";
         cmd.style.top="50px";
         cmd.style.left="50px";
+        main[0].style.height="87%"
         maxiCmd = 0;
     }
 }
@@ -160,13 +163,13 @@ function escreverAtrasasdo(id, tempo, texto){
 }
     
 // ADICIONAR INPUT
-function addInput(){
+function addInput(local){
         let newInput = document.createElement("input");
         newInput.id = "cmdInput"
         newInput.type = "text"
         newInput.autocomplete = "off";
         newInput.style.height="auto";
-        let parent = document.getElementById("main")
+        let parent = document.getElementById(local)
         parent.appendChild(newInput);
 }
 
@@ -176,11 +179,11 @@ function focar(){
 }
 
 // ADICIONAR PARÀGRAFO
-function addParagrafo(id){
+function addParagrafo(id,local){
     let newParagrafo = document.createElement("p")
     newParagrafo.id = id;
     newParagrafo.className = "texto";
-    let parent = document.getElementById("main")
+    let parent = document.getElementById(local)
     parent.appendChild(newParagrafo);
 }
 
@@ -188,7 +191,7 @@ function addParagrafo(id){
 //TRANSFORMAR EM TEXTO E CHAMAR O RESTO DO TEXTO COM O ENTER
 let paragrafos = []
 let i = 0;
-document.getElementById("main").addEventListener("keydown", function (e){
+document.getElementById("instructions").addEventListener("keydown", function (e){
     if(e.key == "Enter" && document.getElementById("cmdInput").value != ""){
         // PEGAR TEXTO DIGITADO
         let textinput = document.getElementById("cmdInput")
@@ -202,7 +205,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
         newParagrafo.id = `inputTexto${paragrafos.length}`
         newParagrafo.className = "texto"
         newParagrafo.innerHTML = texto;
-        document.getElementById("main").appendChild(newParagrafo);
+        document.getElementById("instructions").appendChild(newParagrafo);
         let inputs = document.querySelector("#cmdInput")
         inputs.parentNode.removeChild(inputs);
 
@@ -219,22 +222,22 @@ document.getElementById("main").addEventListener("keydown", function (e){
 // PARTES DO CMD
 function hackingCmdPT0(){
     escrever("FSOCIETY", "text");
-    addParagrafo("text2")
+    addParagrafo("text2","instructions")
     escreverAtrasasdo("text2", 900, "DIGITE 1 PARA COMEÇARMOS!")
-    addInput();
+    addInput("instructions");
     focar()
 }
 
 function hackingCmdPT1(){
-    addParagrafo("text3");
-    addParagrafo("text4")
-    addParagrafo("text5")
-    addParagrafo("text6")
-    addParagrafo("text7")
-    addParagrafo("text8")
-    addParagrafo("text9")
-    addParagrafo("text10")
-    addParagrafo("text11")
+    addParagrafo("text3","instructions");
+    addParagrafo("text4","instructions")
+    addParagrafo("text5","instructions")
+    addParagrafo("text6","instructions")
+    addParagrafo("text7","instructions")
+    addParagrafo("text8","instructions")
+    addParagrafo("text9","instructions")
+    addParagrafo("text10","instructions")
+    addParagrafo("text11","instructions")
 
     if ( document.getElementById("inputTexto1").innerHTML == 1){
         escrever("SEJA BEM-VINDO!!", "text3")
@@ -292,10 +295,10 @@ function hackingCmdPT2(){
 }
 
 function falhou(){
-    addParagrafo("text1000")
-    addParagrafo("text1001")
-    addParagrafo("text1002")
-    addParagrafo("text1003")
+    addParagrafo("text1000","instructions")
+    addParagrafo("text1001","instructions")
+    addParagrafo("text1002","instructions")
+    addParagrafo("text1003","instructions")
     escrever("--------------------------------------------","text1000")
     escrever("VOCÊ FECHOU O TERMINAL E PERDEU O PROGRESSO","text1001")
     escreverAtrasasdo("text1002",4500,"     INICIE O PROCESSO NOVAMENTE")
