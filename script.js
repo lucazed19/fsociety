@@ -25,8 +25,6 @@ function closeCmd(){
 function closeCmd2(){
     let cmd = document.getElementById("cmd2");
     cmd.style.display = "none"
-    maxiCmd=1;
-    maxCmd();
     cmd.style.top="20px";
     cmd.style.left="unset";
     cmd.style.right="50px"
