@@ -67,7 +67,6 @@ function maxNotepad(){
 
 function closeNotepad(){
     let notepad = document.getElementById("notepad")
-    document.getElementById("notepadTextarea").value = ""
     notepad.style.display = "none";
     maxiNotepad = 1
     maxNotepad()
