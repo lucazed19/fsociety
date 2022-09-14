@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="TerminalScript2.js" defer></script>
+    <script src="notepadScript.js" defer></script>
     <title>FSOCIETY</title>
 </head>
 <body>
     <div id="wallpaper">
         <button id="openCmd" onclick="openCmd()"></button>
+        <button id="openNotepad" onclick="openNotepad()"></button>
         <div id="cmd">
             <div class="cmdHeader">
                 <img src="/images/cmd.png" alt="cmd" height="25px" class="cmdLogo">
@@ -37,6 +39,25 @@
             </div>
             <main id="code">
 
+            </main>
+        </div>
+        <div id="notepad">
+            <div id="notepadHeader">
+                <img src="/images/notepad-icon.png" alt="notepad-icon" height="23px">
+                <p>notepad...</p>
+                <div class="buttons">
+                    <button id="minNotepad" onclick="minNotepad()"></button>
+                    <button id="maxNotepad" onclick="maxNotepad()"></button>
+                    <button id="closeNotepad" onclick="closeNotepad()">X</button>
+                </div>
+            </div>
+            <div class="notepadOptions">
+                <button id="file">File</button>
+                <button id="edit">Edit</button>
+                <button id="view">View</button>
+            </div>
+            <main id="notepadMain">
+                <textarea id="notepadTextarea" cols="2" rows="10"></textarea>
             </main>
         </div>
     </div>
