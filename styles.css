@@ -33,7 +33,7 @@ body{
     background-color: rgba(50, 50, 50, 0.85);
     width: 35%;
     height: 50%;
-    display: none;
+    display: block;
     border-radius: 15px;
     position: absolute;
     top: 50px;
