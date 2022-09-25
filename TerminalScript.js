@@ -21,10 +21,25 @@ function escrever(str, id) {
     }, 100);
 }
 
+function escreverRapido(str, id) {
+    var char = str.split('').reverse();
+    var typer = setInterval(function () {
+        if (!char.length) return clearInterval(typer);
+        var next = char.pop();
+        document.getElementById(id).innerHTML += next;
+    }, 10);
+}
+
 function addParagrafo(id) {
     let newParagrafo = document.createElement("p")
     newParagrafo.id = id;
     newParagrafo.className = "texto";
+    let parent = document.getElementById("main")
+    parent.appendChild(newParagrafo);
+}
+function addParagrafoErro() {
+    let newParagrafo = document.createElement("p")
+    newParagrafo.className = "erro";
     let parent = document.getElementById("main")
     parent.appendChild(newParagrafo);
 }
@@ -167,6 +182,15 @@ document.getElementById("main").addEventListener("keydown", function (e){
             if (cl > 0){
                 limpar();
             }
+        }
+        if (textinput.value == "server.join(192.168.0.144)"){
+            addParagrafo("text3")
+            escreverRapido("login needed...", "text3")
+        } else {
+            addParagrafoErro()
+            let erro = document.getElementsByClassName("erro")
+            let tamanho = erro.length - 1;
+            erro[tamanho].innerHTML = "Comando Inválido"
         }
         addInput();
     }
