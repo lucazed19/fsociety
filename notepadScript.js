@@ -56,7 +56,7 @@ function maxNotepad(){
     }else if (maxiNotepad == 1){
         notepad.style.width = "40%";
         notepad.style.height = "70%";
-        notepad.style.top = "35px"
+        notepad.style.top = "8%"
         notepad.style.left = "unset";
         notepad.style.right = "20px"
         notepad.style.borderRadius = "10px";
@@ -70,4 +70,14 @@ function closeNotepad(){
     notepad.style.display = "none";
     maxiNotepad = 1
     maxNotepad()
+}
+
+function hover(){
+    setTimeout(()=>{
+        document.getElementById("infosNotepad").style.display = "flex"
+    },500)
+}
+
+function notHover(){
+    document.getElementById("infosNotepad").style.display = "none";
 }

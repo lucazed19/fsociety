@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="TerminalScript2.js" defer></script>
+    <script src="TerminalScript.js" defer></script>
     <script src="notepadScript.js" defer></script>
     <title>FSOCIETY</title>
 </head>
 <body>
     <div id="wallpaper">
         <button id="openCmd" onclick="openCmd()"></button>
-        <button id="openNotepad" onclick="openNotepad()"></button>
+        <button id="openNotepad" onclick="openNotepad(); autoClose()" onmouseover="hover()" onmouseleave="notHover()"></button>
+        <div id="infosNotepad">
+            <img src="/images/info.png" alt="notepad icon" height="60%">
+            <div>
+                <h4>Name: everyRev0lution</h4>
+                <h4>Type: plain text document</h4>
+                <h4>Size: 0 bytes</h4>
+                <h4>Last Modified: Today at 00:00:00 AM</h4>
+            </div>
+        </div>
         <div id="cmd">
             <div id="cmdHeader">
                 <img src="/images/cmd.png" alt="cmd" height="25px" class="cmdLogo">

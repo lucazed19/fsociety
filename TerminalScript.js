@@ -92,27 +92,36 @@ function maxCmd() {
         cmd.style.height = "50%";
         cmd.style.width = "35%";
         cmd.style.borderRadius = "15px";
-        cmd.style.top = "20%";
-        cmd.style.left = "32%";
+        cmd.style.top = "15%";
+        cmd.style.left = "10%";
         main[0].style.height = "87%"
         maxiCmd = 0;
     }
 }
 
-
+let cl= 0;
 function closeCmd() {
-    let cmd = document.getElementById("cmd");
-    cmd.style.display = "none"
-    maxiCmd = 1;
-    maxCmd();
-    cmd.style.top = "20%";
-    cmd.style.left = "32%";
+    if (cl > 0){
+        let cmd = document.getElementById("cmd");
+        cmd.style.display = "none"
+        maxiCmd = 1;
+        maxCmd();
+        cmd.style.top = "15%";
+        cmd.style.left = "10%";
+        limpar();
+    } else if (document.getElementById("notepad").style.display == "none" && cl == 0){}
+}
+
+function autoClose(){
+    cl++
+    closeCmd();
 }
 
 function openCmd() {
     document.getElementById("cmd").style.display = "block";
     document.getElementById("cmdInput").focus();
 }
+
 
 function addInput(){
     let newInput = document.createElement("input");
@@ -152,8 +161,10 @@ document.getElementById("main").addEventListener("keydown", function (e){
         document.getElementById("main").appendChild(newParagrafo);
         let inputs = document.querySelector("#cmdInput")
         inputs.parentNode.removeChild(inputs);
-        if (textinput.value == "cls"){
-            limpar();
+        if (textinput.value == "clear"){
+            if (cl > 0){
+                limpar();
+            }
         }
         addInput();
     }

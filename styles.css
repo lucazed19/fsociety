@@ -15,15 +15,15 @@ body{
 #wallpaper{
     width: 100vw;
     height: 100vh;
-    background-image: url(/images/bgd-kali.jpeg);
+    background-image: url(/images/bgd-kali.png);
     background-repeat: no-repeat;
     background-size: 100%;
 }
 
 #openCmd{
-    width: 2.3%;
-    height: 5%;
-    left: 12.9%;
+    width: 1.7%;
+    height: 3.9%;
+    left: 9.1%;
     background-color: transparent;
     position: fixed;
     cursor: pointer;
@@ -39,18 +39,6 @@ body{
     top: 20%;
     left: 32%;
     z-index: 0;
-}
-
-#cmd2{
-    background-color: rgba(50, 50, 50, 0.85);
-    width: 50%;
-    height: 100%;
-    display: none;
-    border-radius: 15px;
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    z-index: 1;
 }
 
 #cmdHeader{
@@ -76,7 +64,7 @@ body{
     align-items: center;
 }
 
-#close, #close2, #closeNotepad{
+#close, #closeNotepad{
     background-color: rgb(31, 31, 182);
     height: 20px;
     width: 20px;
@@ -87,7 +75,7 @@ body{
     box-shadow: inset 0px 0px 4px black;
 }
 
-#max, #min, #max2, #min2, #minNotepad, #maxNotepad{
+#max, #min, #minNotepad, #maxNotepad{
     height: 15px;
     width: 15px;
     background-color: rgb(50, 50, 50);
@@ -118,7 +106,8 @@ main::-webkit-scrollbar{
     color: white;
     overflow: hidden;
     display: block;
-    font-size: 13px;
+    font-family: monospace;
+    font-size: 15px;
 }
 
 .texto{
@@ -129,13 +118,35 @@ main::-webkit-scrollbar{
 }
 
 #openNotepad{
-    width: 2.3%;
-    height: 5%;
-    left: 8.2%;
+    width: 2.8%;
+    height: 6%;
+    left: 2.4%;
+    top: 43%;
     background-color: transparent;
     position: fixed;
     cursor: pointer;
 }
+
+#infosNotepad{
+    height: 10%;
+    width: 17%;
+    background-color: rgba(20, 20, 20, 0.89);
+    position: fixed;
+    top: 49%;
+    left: 0.1%;
+    border-radius: 5px;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    color: rgb(190,190,190);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#infosNotepad h4{
+    font-weight: normal;
+    font-size: 12px;
+}
+
 
 #notepad{
     height: 70%;
@@ -144,7 +155,7 @@ main::-webkit-scrollbar{
     position: absolute;
     border-radius: 10px 10px 5px 5px;
     display: none;
-    top: 35px;
+    top: 8%;
     right: 20px;
 }
 
