@@ -113,8 +113,10 @@ function closeCmd() {
 }
 
 function autoClose(){
-    cl++
-    closeCmd();
+    if(cl == 0){
+        cl++
+        closeCmd();
+    }
 }
 
 function openCmd() {
