@@ -227,9 +227,14 @@ main::-webkit-scrollbar{
 }
 
 .notepadToolbar img {
-    height: 20px;
+    height: 18px;
     margin-left: 10px;
     margin-right: 5px;
+}
+
+.notepadToolbar div{
+    display: flex;
+    align-items: center;
 }
 
 .div1{
@@ -242,7 +247,7 @@ main::-webkit-scrollbar{
     border-right: transparent;
     display: flex;
     justify-content: space-between;
-    width: 42%;
+    width: 100%;
 }
 
 #notepadTextarea{
