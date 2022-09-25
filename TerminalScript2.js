@@ -1,14 +1,18 @@
 // initial Instructions
-async function initialize() {
+setTimeout(()=>{
+    document.getElementById("cmd").style.display="block"
+    initialize()
+},1000)
+
+function initialize() {
     escrever("FSOCIETY", "text");
-    addParagrafo("text2", "instructions")
-    escreverAtrasasdo("text2", 900, "DIGITE 1 PARA COMEÇARMOS!")
-    addInput("instructions");
+    addParagrafo("text2");
+    escreverAtrasasdo("text2", 900, "ABRA O NOTEPAD PARA RECEBER SUAS INSTRUÇÕES SOBRE A MISSÃO");
+    addInput();
     focar();
 }
-initialize()
 
-function escrever(str, id,) {
+function escrever(str, id) {
     var char = str.split('').reverse();
     var typer = setInterval(function () {
         if (!char.length) return clearInterval(typer);
@@ -17,11 +21,11 @@ function escrever(str, id,) {
     }, 100);
 }
 
-function addParagrafo(id, local) {
+function addParagrafo(id) {
     let newParagrafo = document.createElement("p")
     newParagrafo.id = id;
     newParagrafo.className = "texto";
-    let parent = document.getElementById(local)
+    let parent = document.getElementById("main")
     parent.appendChild(newParagrafo);
 }
 
@@ -39,7 +43,7 @@ function dragCmd(elmnt) {
     } else {
         elmnt.onmousedown = dragMouseDown;
     }
-
+    
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
@@ -59,20 +63,17 @@ function dragCmd(elmnt) {
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
-
+    
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
     }
 }
+dragCmd(document.getElementById("cmd"));
 
 function minCmd() {
     document.getElementById("cmd").style.display = "none"
     document.getElementById("cmd2").style.display = "none"
-}
-function minCmd2() {
-    document.getElementById("cmd2").style.display = "none"
-    falhou();
 }
 
 let maxiCmd = 0;
@@ -91,54 +92,73 @@ function maxCmd() {
         cmd.style.height = "50%";
         cmd.style.width = "35%";
         cmd.style.borderRadius = "15px";
-        cmd.style.top = "50px";
-        cmd.style.left = "50px";
+        cmd.style.top = "20%";
+        cmd.style.left = "32%";
         main[0].style.height = "87%"
         maxiCmd = 0;
     }
 }
-let maxiCmd2 = 0;
-function maxCmd2() {
-    let cmd = document.getElementById("cmd2");
-    if (maxiCmd2 == 0) {
-        cmd.style.height = "100%";
-        cmd.style.width = "100%";
-        cmd.style.borderRadius = 0;
-        cmd.style.top = 0;
-        cmd.style.left = 0;
-        maxiCmd2 = 1;
-    } else if (maxiCmd2 == 1) {
-        cmd.style.height = "100%";
-        cmd.style.width = "50%";
-        cmd.style.borderRadius = "15px";
-        cmd.style.top = "20px";
-        cmd.style.left = "unset";
-        cmd.style.right = "50px";
-        maxiCmd2 = 0;
-    }
-}
+
+
 function closeCmd() {
     let cmd = document.getElementById("cmd");
-    let cmd2 = document.getElementById("cmd2");
     cmd.style.display = "none"
-    cmd2.style.display = "none"
     maxiCmd = 1;
     maxCmd();
-    cmd.style.top = "50px";
-    cmd.style.left = "50px";
-    limpar();
-    
+    cmd.style.top = "20%";
+    cmd.style.left = "32%";
 }
-function youCantCloseCmd() {
-  escrever("você não pode fechar BUCETUDO")
 
-}
 function openCmd() {
     document.getElementById("cmd").style.display = "block";
-    let texto = document.getElementById("text");
-    if (texto.innerText == "") {
-        hackingCmdPT0();
-    }
-    focar();
+    document.getElementById("cmdInput").focus();
 }
-dragCmd(document.getElementById("cmd"));
+
+function addInput(){
+    let newInput = document.createElement("input");
+    newInput.id = "cmdInput"
+    newInput.type = "text"
+    newInput.autocomplete = "off";
+    newInput.style.height="auto";
+    let parent = document.getElementById("main")
+    parent.appendChild(newInput);
+    document.getElementById("cmdInput").focus();
+}
+
+function limpar(){
+    let limparParagrafos = document.querySelectorAll("p");
+    for (let i = 0; limparParagrafos[i]; i++) {
+        limparParagrafos[i].innerText = "";
+        limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
+    }
+    for (let i = 0; paragrafos[i]; i++){
+        paragrafos.pop()
+    }
+}
+
+let i = 0;
+let paragrafos = [];
+document.getElementById("main").addEventListener("keydown", function (e){
+    if(e.key == "Enter" && document.getElementById("cmdInput").value != ""){
+        let textinput = document.getElementById("cmdInput")
+        let texto = textinput.value;
+        textinput.style.display = "none";
+        i++;
+        paragrafos.push(i);
+        let newParagrafo = document.createElement("p");
+        newParagrafo.id = `inputTexto${paragrafos.length}`
+        newParagrafo.className = "texto"
+        newParagrafo.innerHTML = texto;
+        document.getElementById("main").appendChild(newParagrafo);
+        let inputs = document.querySelector("#cmdInput")
+        inputs.parentNode.removeChild(inputs);
+        if (textinput.value == "cls"){
+            limpar();
+        }
+        addInput();
+    }
+})
+
+document.getElementById("main").addEventListener("click", function (){
+    document.getElementById("cmdInput").focus();
+})
