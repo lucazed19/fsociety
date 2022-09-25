@@ -13,8 +13,8 @@ body{
 }
 
 #wallpaper{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image: url(/images/bgd-kali.png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -171,9 +171,10 @@ main::-webkit-scrollbar{
 
 }
 
-#notepadHeader p{
+#notepadHeader h4{
     color: white;
-    font-size: 15px;
+    font-size: 12px;
+    font-weight: normal;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -190,7 +191,7 @@ main::-webkit-scrollbar{
     align-items: center;
 }
 
-#file, #edit, #view{
+#file, #edit, #view, #search, #document, #help{
     background-color: rgb(30, 30, 30);
     color: white;
     cursor: pointer;
@@ -204,9 +205,44 @@ main::-webkit-scrollbar{
     width: 35px;
 }
 
+#search{
+    width: 38px;
+}
+
+#document{
+    width: 57px;
+}
 #notepadMain{
     height: calc(100% - 55px);
     border-radius: 0 0 5px 5px;
+}
+
+.notepadToolbar{
+    height: 25px;
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+    border-top: 1px solid rgb(40, 40, 40);
+    display: flex;
+    align-items: center;
+}
+
+.notepadToolbar img {
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.div1{
+    border-right: 1px solid rgb(40, 40, 40);
+}
+.div2{
+    border-right: 1px solid rgb(40, 40, 40);
+}
+.notepadToolbar div:last-child{
+    border-right: transparent;
+    display: flex;
+    justify-content: space-between;
+    width: 42%;
 }
 
 #notepadTextarea{
