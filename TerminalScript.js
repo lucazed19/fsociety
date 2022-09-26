@@ -224,6 +224,7 @@ function openCmd() {
 }
 function openCmd2() {
     document.getElementById("cmd2").style.display = "block";
+    addInputCmd2()
     document.getElementById("cmdInput2").focus();
 }
 
@@ -371,6 +372,8 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
             if (cl > 0){
                 limpar2();
             }
+        }else if(textinput.value.includes("vim")){
+
         }
         else {
             addParagrafoErroCmd2()
