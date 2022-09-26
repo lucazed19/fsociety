@@ -29,6 +29,13 @@ function escreverRapido(str, id) {
         document.getElementById(id).innerHTML += next;
     }, 10);
 }
+function escreverRapidoAtr(id, tempo, texto) {
+    let init = setInterval(function () {
+        escreverRapido(texto, id)
+        clearInterval(init)
+    }, tempo)
+}
+
 
 function addParagrafo(id) {
     let newParagrafo = document.createElement("p")
@@ -151,6 +158,30 @@ function addInput(){
     document.getElementById("cmdInput").focus();
 }
 
+function addLabelInput(id){
+    let newDiv = document.createElement("div")
+    newDiv.id=id+1;
+    newDiv.style.display = "flex"
+    newDiv.style.alignItems = "center";
+    newDiv.style.justifyContent = "start"
+    let parent = document.getElementById("main")
+    parent.appendChild(newDiv)
+    let newLabel = document.createElement("label");
+    newLabel.for = "cmdInput";
+    newLabel.style.marginRight = 0
+    newLabel.id = id;
+    document.getElementById(id+1).appendChild(newLabel);
+    let newInput = document.createElement("input");
+    newInput.id="cmdInput";
+    newInput.type = "text"
+    newInput.style.marginLeft = 0;
+    newInput.autocomplete = "off";
+    newInput.style.height="auto";
+    document.getElementById(id+1).appendChild(newInput);
+    document.getElementById("cmdInput").focus();
+}
+
+
 function limpar(){
     let limparParagrafos = document.querySelectorAll("p");
     for (let i = 0; limparParagrafos[i]; i++) {
@@ -164,6 +195,7 @@ function limpar(){
 
 let i = 0;
 let paragrafos = [];
+let continuar = 0;
 document.getElementById("main").addEventListener("keydown", function (e){
     if(e.key == "Enter" && document.getElementById("cmdInput").value != ""){
         let textinput = document.getElementById("cmdInput")
@@ -183,10 +215,35 @@ document.getElementById("main").addEventListener("keydown", function (e){
                 limpar();
             }
         }
-        if (textinput.value == "server.join(192.168.0.144)"){
+        if (textinput.value == 'server.join("192.168.0.144")' && continuar == 0){
             addParagrafo("text3")
             escreverRapido("login needed...", "text3")
-        } else {
+            addParagrafo("text4")
+            escreverRapidoAtr("text4",150,"insert your account info")
+            addParagrafo("text5")
+            escreverRapidoAtr("text5",400, "user:")
+            addParagrafo("text6")
+            escreverRapidoAtr("text6", 450,"password:")
+            continuar++;
+        } else if(textinput.value == "exec('bruteforce.exe')=> //([a-zA-Z-0-9]+).apk" || textinput.value == "exec('bruteforce.exe')=>//([a-zA-Z-0-9]+).apk" && continuar == 1){
+            addParagrafo("text7")
+            escreverRapido("username found - dolorezHaze","text7")
+            addParagrafo("text8")
+            escreverRapidoAtr("text8",280,"searching for matching password...")
+            addParagrafo("text9")
+            addParagrafo("text10")
+            setTimeout(()=>{
+                escreverRapido("PASSWORD FOUND! - @wait4it#1734","text9")
+                escreverAtrasasdo("text10",320,"welcome back, Dolorez Haze... ")
+            },2500)
+            continuar++;
+        }else if(textinput.value == "import os" && continuar == 2){
+            continuar++
+        }else if(textinput.value == "folder = './user/backup'"){
+            continuar++
+        }
+        
+        else {
             addParagrafoErro()
             let erro = document.getElementsByClassName("erro")
             let tamanho = erro.length - 1;
