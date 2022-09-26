@@ -366,8 +366,22 @@ document.getElementById("main").addEventListener("keydown", function (e){
                 },3120)
             },2500)
             continuar++;
+        }else if(textinput.value == "getRightFile(erased_chemical_leak)" && continuar2 == 9){
+            addParagrafo("text100001")
+            addParagrafo("text100002")
+            addParagrafo("text100003")
+            escrever("exporting payload...","text100001")
+            escreverAtrasasdo2("text100002", 2000 ,"....")
+            escreverAtrasasdo("text100003",3200,"payload exported.")
+            continuar2++
+        }else if(textinput.value == "server.quit" && continuar2 == 10){
+            closeNotepad();
+            closeNotepad2();
+            closeCmd2();
+            closeCmd()
+            document.getElementById("wallpaper").style.backgroundImage = "url()"
+            document.getElementById("final").style.display = "block"
         }
-
         else {
             addParagrafoErro()
             let erro = document.getElementsByClassName("erro")
@@ -419,20 +433,7 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
         }else if(textinput.value == "file_data to encrypt.payload" && continuar2 ==7){
             continuar2++
         }else if(textinput.value == "=>export payload to url = 192.168.6.66" && continuar2 == 8){
-            addParagrafoCmd2("text100001")
-            addParagrafoCmd2("text100002")
-            addParagrafoCmd2("text100003")
-            escrever("exporting payload...","text100001")
-            escreverAtrasasdo2("text100002", 2000 ,"....")
-            escreverAtrasasdo("text100003",3200,"payload exported.")
             continuar2++
-        }else if(textinput.value == "server.quit" && continuar2 == 9){
-            closeNotepad();
-            closeNotepad2();
-            closeCmd2();
-            closeCmd()
-            document.getElementById("wallpaper").style.backgroundImage = "url()"
-            document.getElementById("final").style.display = "block"
         }
         else {
             addParagrafoErroCmd2()
