@@ -29,7 +29,7 @@ body{
     cursor: pointer;
 }
 
-#cmd{
+#cmd, #cmd2{
     background-color: rgba(50, 50, 50, 0.85);
     width: 35%;
     height: 50%;
@@ -41,7 +41,20 @@ body{
     z-index: 0;
 }
 
-#cmdHeader{
+#cmd2{
+    top: 58%;
+    left: 20%;
+    height: 40%;
+}
+
+#main2{
+    color: white;
+    font-family: monospace;
+    font-size: 15px;
+    margin: 1px 10px;
+}
+
+#cmdHeader, #cmd2Header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,7 +106,7 @@ main::-webkit-scrollbar{
     display: none;
 }
 
-#cmdInput{
+#cmdInput, #cmdInput2{
     box-sizing: border-box;
     width: 98%;
     height: auto;
@@ -117,7 +130,7 @@ main::-webkit-scrollbar{
     font-size: 15px;
 }
 
-.erro, label{
+.erro, label, .erro2{
     font-family: monospace;
     font-size: 15px;
     color: white;

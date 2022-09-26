@@ -60,6 +60,19 @@ function addParagrafoErro() {
     let parent = document.getElementById("main")
     parent.appendChild(newParagrafo);
 }
+function addParagrafoCmd2(id) {
+    let newParagrafo = document.createElement("p")
+    newParagrafo.id = id;
+    newParagrafo.className = "texto";
+    let parent = document.getElementById("main2")
+    parent.appendChild(newParagrafo);
+}
+function addParagrafoErroCmd2() {
+    let newParagrafo = document.createElement("p")
+    newParagrafo.className = "erro2";
+    let parent = document.getElementById("main2")
+    parent.appendChild(newParagrafo);
+}
 
 // Move as Janelas
 function dragCmd(elmnt) {
@@ -96,10 +109,13 @@ function dragCmd(elmnt) {
     }
 }
 dragCmd(document.getElementById("cmd"));
+dragCmd(document.getElementById("cmd2"));
 
 // minimiza cmd
 function minCmd() {
     document.getElementById("cmd").style.display = "none"
+}
+function minCmd2(){
     document.getElementById("cmd2").style.display = "none"
 }
 
@@ -120,10 +136,32 @@ function maxCmd() {
         cmd.style.height = "50%";
         cmd.style.width = "35%";
         cmd.style.borderRadius = "15px";
-        cmd.style.top = "15%";
+        cmd.style.top = "6%";
         cmd.style.left = "10%";
         main[0].style.height = "87%"
         maxiCmd = 0;
+    }
+}
+let maxiCmd2 = 0;
+function maxCmd2(){
+    let cmd = document.getElementById("cmd2");
+    let main = document.getElementsByTagName("main")
+    if (maxiCmd2 == 0) {
+        cmd.style.height = "100%";
+        cmd.style.width = "100%";
+        cmd.style.borderRadius = 0;
+        cmd.style.top = 0;
+        cmd.style.left = 0;
+        main[1].style.height = "93%"
+        maxiCmd2 = 1;
+    } else if (maxiCmd2 == 1) {
+        cmd.style.height = "40%";
+        cmd.style.width = "35%";
+        cmd.style.borderRadius = "15px";
+        cmd.style.top = "58%";
+        cmd.style.left = "20%";
+        main[1].style.height = "87%"
+        maxiCmd2 = 0;
     }
 }
 
@@ -135,7 +173,7 @@ function closeCmd() {
         cmd.style.display = "none"
         maxiCmd = 1;
         maxCmd();
-        cmd.style.top = "15%";
+        cmd.style.top = "6%";
         cmd.style.left = "10%";
         limpar();
     } else if (document.getElementById("notepad").style.display == "none" && cl == 0){}
@@ -146,16 +184,37 @@ function autoClose(){
         closeCmd();
     }
 }
+function closeCmd2(){
+    let cmd = document.getElementById("cmd2");
+        cmd.style.display = "none"
+        maxiCmd2 = 1;
+        maxCmd2();
+        cmd.style.top = "58%";
+        cmd.style.left = "20%";
+        limpar2();
+}
 
 // Limpa cmd
 function limpar(){
-    let limparParagrafos = document.querySelectorAll("p");
+    let main = document.getElementById("main")
+    let limparParagrafos = main.querySelectorAll("p")
     for (let i = 0; limparParagrafos[i]; i++) {
         limparParagrafos[i].innerText = "";
         limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
     }
     for (let i = 0; paragrafos[i]; i++){
         paragrafos.pop()
+    }
+}
+function limpar2(){
+    let main = document.getElementById("main2")
+    let limparParagrafos = main.querySelectorAll("p")
+    for (let i = 0; limparParagrafos[i]; i++) {
+        limparParagrafos[i].innerText = "";
+        limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
+    }
+    for (let i = 0; paragrafos[i]; i++){
+        paragrafos2.pop()
     }
 }
 // Abre cmd
@@ -175,6 +234,17 @@ function addInput(){
     let parent = document.getElementById("main")
     parent.appendChild(newInput);
     document.getElementById("cmdInput").focus();
+}
+function addInputCmd2(){
+    let newInput = document.createElement("input");
+    newInput.id = "cmdInput2"
+    newInput.type = "text"
+    newInput.autocomplete = "off";
+    newInput.spellcheck = "false"
+    newInput.style.height="auto";
+    let parent = document.getElementById("main2")
+    parent.appendChild(newInput);
+    document.getElementById("cmdInput2").focus();
 }
 function addLabelInput(id){
     let newDiv = document.createElement("div")
@@ -221,8 +291,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
             if (cl > 0){
                 limpar();
             }
-        }
-        if (textinput.value == 'server.join("192.168.0.144")' && continuar == 0){
+        }else if (textinput.value == 'server.join("192.168.0.144")' || textinput.value == "server.join('192.168.0.144')" && continuar == 0){
             addParagrafo("text3")
             escreverRapido("login needed...", "text3")
             addParagrafo("text4")
@@ -232,7 +301,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
             addParagrafo("text6")
             escreverRapidoAtr("text6", 450,"password:")
             continuar++;
-        } else if(textinput.value == "exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk" || textinput.value == "exec('bruteforce.exe')=>//([a-zA-Z-0-9]+).apk" && continuar == 1){
+        } else if(textinput.value == String.raw`exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec('bruteforce.exe')=>/\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec("bruteforce.exe")=>/\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk`&& continuar == 1){
             addParagrafo("text7")
             escreverRapido("username found - dolorezHaze","text7")
             addParagrafo("text8")
@@ -242,12 +311,12 @@ document.getElementById("main").addEventListener("keydown", function (e){
             setTimeout(()=>{
                 escreverRapido("PASSWORD FOUND! - @wait4it#1734","text9")
                 escreverAtrasasdo("text10",320,"welcome back, Dolorez Haze... ")
+                setTimeout(()=>{
+                    document.getElementById("cmd2").style.display = "block"
+                    addInputCmd2();
+                },3120)
             },2500)
             continuar++;
-        }else if(textinput.value == "import os" && continuar == 2){
-            continuar++
-        }else if(textinput.value == "folder = './user/backup'"){
-            continuar++
         }
         
         else {
@@ -260,6 +329,40 @@ document.getElementById("main").addEventListener("keydown", function (e){
     }
 })
 
+let i2 = 0;
+let paragrafos2 = [];
+document.getElementById("main2").addEventListener("keydown", (e)=>{
+    if(e.key == "Enter" && document.getElementById("cmdInput2").value != ""){
+        let textinput = document.getElementById("cmdInput2")
+        let texto = textinput.value;
+        textinput.style.display = "none";
+        i2++;
+        paragrafos2.push(i);
+        let newParagrafo = document.createElement("p");
+        newParagrafo.id = `inputTexto${paragrafos.length}`
+        newParagrafo.className = "texto"
+        newParagrafo.innerHTML = texto;
+        document.getElementById("main2").appendChild(newParagrafo);
+        let inputs = document.querySelector("#cmdInput2")
+        inputs.parentNode.removeChild(inputs);
+        if (textinput.value == "clear"){
+            if (cl > 0){
+                limpar2();
+            }
+        }
+        else {
+            addParagrafoErroCmd2()
+            let erro = document.getElementsByClassName("erro2")
+            let tamanho = erro.length - 1;
+            erro[tamanho].innerHTML = "Comando Inválido"
+        }
+        addInputCmd2();
+}
+})
+
 document.getElementById("main").addEventListener("click", function (){
     document.getElementById("cmdInput").focus();
+})
+document.getElementById("main2").addEventListener("click", function (){
+    document.getElementById("cmdInput2").focus();
 })

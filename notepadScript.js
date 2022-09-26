@@ -73,9 +73,7 @@ function closeNotepad(){
 }
 
 function hover(){
-    setTimeout(()=>{
         document.getElementById("infosNotepad").style.display = "flex"
-    },500)
 }
 
 function notHover(){
