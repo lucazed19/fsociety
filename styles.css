@@ -15,7 +15,7 @@ body{
 #wallpaper{
     width: 100%;
     height: 100%;
-    background-image: url(/images/bgd-kali.png);
+    background-image: url(/images/bgd-kali.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -26,7 +26,49 @@ body{
     left: 9.1%;
     background-color: transparent;
     position: fixed;
+    /* border: 1px solid black; */
     cursor: pointer;
+}
+
+#escolher{
+    width: 1.9%;
+    height: 3.9%;
+    left: 19.2%;
+    /* border: 1px solid black ; */
+    background-color: transparent;
+    position: fixed;
+    cursor: pointer;
+}
+
+#cmds{
+    width: 7%;
+    height: auto;
+    background-color: rgb(40, 40, 40);
+    position: fixed;
+    left: 19.2%;
+    top: 4%;
+    border-radius: 5px;
+    display: none;
+}
+
+.cmds{
+    background-color: transparent;
+    margin: 2px;
+    margin-left: 0;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.cmds img{
+    margin-right: 5px;
+}
+
+.cmds:last-of-type{
+    display: none;
 }
 
 #cmd, #cmd2{
@@ -145,9 +187,21 @@ main::-webkit-scrollbar{
     background-color: transparent;
     position: fixed;
     cursor: pointer;
+    /* border: 1px solid black; */
 }
 
-#infosNotepad{
+#openNotepad2{
+    /* border: 1px solid black; */
+    width: 2.8%;
+    height: 6%;
+    left: 2.4%;
+    top: 54.3%;
+    background-color: transparent;
+    position: fixed;
+    cursor: pointer;
+}
+
+.infosNotepad, .infosNotepad2{
     height: 10%;
     width: 17%;
     background-color: rgba(20, 20, 20, 0.89);
@@ -162,11 +216,14 @@ main::-webkit-scrollbar{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#infosNotepad h4{
+.infosNotepad h4, .infosNotepad2 h4{
     font-weight: normal;
     font-size: 12px;
 }
 
+.infosNotepad2{
+    top: 60.3%;
+}
 
 #notepad{
     height: 70%;

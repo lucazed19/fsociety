@@ -7,7 +7,7 @@ setTimeout(()=>{
 function initialize() {
     escrever("FSOCIETY", "text");
     addParagrafo("text2");
-    escreverAtrasasdo("text2", 900, "ABRA O NOTEPAD PARA RECEBER SUAS INSTRUÇÕES SOBRE A MISSÃO");
+    escreverAtrasasdo("text2", 900, "ABRA O NOTEPAD EVERYREV0LUTION PARA RECEBER SUAS INSTRUÇÕES SOBRE A MISSÃO");
     addInput();
     focar();
 }
@@ -222,6 +222,10 @@ function openCmd() {
     document.getElementById("cmd").style.display = "block";
     document.getElementById("cmdInput").focus();
 }
+function openCmd2() {
+    document.getElementById("cmd2").style.display = "block";
+    document.getElementById("cmdInput2").focus();
+}
 
 // Adiciona input
 function addInput(){
@@ -269,6 +273,17 @@ function addLabelInput(id){
     document.getElementById("cmdInput").focus();
 }
 
+let k = 0;
+function escolherCmds(){
+    if (k==0){
+        document.getElementById("cmds").style.display = "block"
+        k=1
+    }else{
+        document.getElementById("cmds").style.display = "none"
+        k=0
+    }
+}
+
 // Enter no Cmd e Chama todo as coisas do cmd
 let i = 0;
 let paragrafos = [];
@@ -313,6 +328,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
                 escreverAtrasasdo("text10",320,"welcome back, Dolorez Haze... ")
                 setTimeout(()=>{
                     document.getElementById("cmd2").style.display = "block"
+                    document.getElementsByClassName("cmds")[1].style.display = "flex"
                     addInputCmd2();
                 },3120)
             },2500)

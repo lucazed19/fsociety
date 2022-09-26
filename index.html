@@ -13,11 +13,26 @@
 <body>
     <div id="wallpaper">
         <button id="openCmd" onclick="openCmd()"></button>
+        <button id="escolher" onclick="escolherCmds()"></button>
+        <div id="cmds">
+            <button class="cmds" onclick="openCmd()"><img src="/images/cmd.png" alt="cmd logo" height="20px">user@kali: ~</button>
+            <button class="cmds" onclick="openCmd2()"><img src="/images/cmd.png" alt="cmd logo" height="20px">user@kali: ~</button>
+        </div>
         <button id="openNotepad" onclick="openNotepad(); autoClose()" onmouseover="hover()" onmouseleave="notHover()"></button>
-        <div id="infosNotepad">
+        <div class="infosNotepad">
             <img src="/images/info.png" alt="notepad icon" height="60%">
             <div>
                 <h4>Name: everyRev0lution</h4>
+                <h4>Type: plain text document</h4>
+                <h4>Size: 0 bytes</h4>
+                <h4>Last Modified: Today at 00:00:00 AM</h4>
+            </div>
+        </div>
+        <button id="openNotepad2" onclick="openNotepad2()" onmouseover="hover2()" onmouseleave="notHover2()"></button>
+        <div class="infosNotepad2">
+            <img src="/images/info.png" alt="notepad icon" height="60%">
+            <div>
+                <h4>Name: startsW1th</h4>
                 <h4>Type: plain text document</h4>
                 <h4>Size: 0 bytes</h4>
                 <h4>Last Modified: Today at 00:00:00 AM</h4>

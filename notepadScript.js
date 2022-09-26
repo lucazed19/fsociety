@@ -73,9 +73,15 @@ function closeNotepad(){
 }
 
 function hover(){
-        document.getElementById("infosNotepad").style.display = "flex"
+        document.getElementsByClassName("infosNotepad")[0].style.display = "flex"
 }
-
+function hover2(){
+    document.getElementsByClassName("infosNotepad2")[0].style.display = "flex"
+}
+    
 function notHover(){
-    document.getElementById("infosNotepad").style.display = "none";
+    document.getElementsByClassName("infosNotepad")[0].style.display = "none"
+}
+function notHover2(){
+    document.getElementsByClassName("infosNotepad2")[0].style.display = "none"
 }
