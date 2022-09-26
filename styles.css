@@ -12,10 +12,17 @@ body{
     overflow: hidden;
 }
 
+#final{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 250px;
+    display: none;
+}
+
 #wallpaper{
     width: 100%;
     height: 100%;
     background-image: url(/images/bgd-kali.jpg);
+    background-color: black;
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -38,6 +45,7 @@ body{
     background-color: transparent;
     position: fixed;
     cursor: pointer;
+    z-index: 3;
 }
 
 #cmds{

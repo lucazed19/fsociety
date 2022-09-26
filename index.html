@@ -13,11 +13,6 @@
 <body>
     <div id="wallpaper">
         <button id="openCmd" onclick="openCmd()"></button>
-        <button id="escolher" onclick="escolherCmds()"></button>
-        <div id="cmds">
-            <button class="cmds" onclick="openCmd()"><img src="/images/cmd.png" alt="cmd logo" height="20px">user@kali: ~</button>
-            <button class="cmds" onclick="openCmd2()"><img src="/images/cmd.png" alt="cmd logo" height="20px">user@kali: ~</button>
-        </div>
         <button id="openNotepad" onclick="openNotepad(); autoClose()" onmouseover="hover()" onmouseleave="notHover()"></button>
         <div class="infosNotepad">
             <img src="/images/info.png" alt="notepad icon" height="60%">
@@ -108,20 +103,12 @@
                 </div>
             </div>
             <main id="notepadMain">
-                <textarea id="notepadTextarea" cols="2" rows="10" spellcheck="false">server.join("")
+                <textarea id="notepadTextarea" cols="2" rows="10" spellcheck="false">Abra o primeiro Cmd
+server.join("")
 serverIp: 192.168.0.144
 exec('')=>
 bruteforce.exe
 /\/([a-zA-Z-0-9]+).apk
-
-import os
-folder = './user/backup'
-def GetRightFile(fileName):
-    for fileName in os.walk(folder)
-        if fileName === file.name
-            file_data = file.content
-                file_data to encrypt.payload 
-                =>export payload to url = 192.168.6.66
 
 server.join("192.168.0.144")
 exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk
@@ -171,24 +158,25 @@ exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk
             </div>
             <main id="notepadMain2">
                 <textarea id="notepad2Textarea" cols="2" rows="10" spellcheck="false">Abra o segundo cmd e comece os scripts
-vim nome_script.py</textarea>
+vim nome_script.py
+import os
+folder = './user/backup'
+def GetRightFile(fileName):
+    for fileName in os.walk(folder)
+        if fileName === file.name
+            file_data = file.content
+                file_data to encrypt.payload 
+                =>export payload to url = 192.168.6.66
+server.quit</textarea>
             </main>
         </div>
 
-        <div id="cmd3">
-            <div id="cmd3Header">
-                <img src="/images/cmd.png" alt="cmd" height="25px" class="cmdLogo">
-                <h4 class="cmdPath">user@kali: ~</h4>
-                <div class="buttons">
-                    <button id="min" onclick="minCmd3()"></button>
-                    <button id="max" onclick="maxCmd3()"></button>
-                    <button id="close" onclick="closeCmd3()">X</button>
-                </div>
-            </div>
-            <main id="main3">
-    
-            </main>
+        <button id="escolher" onclick="escolherCmds()"></button>
+        <div id="cmds">
+            <button class="cmds" onclick="openCmd(); closeEscolher()"><img src="/images/cmd.png" alt="cmd logo" height="20px">user@kali: ~</button>
+            <button class="cmds" onclick="openCmd2(), closeEscolher()"><img src="/images/cmd.png" alt="cmd logo" height="20px">user@kali: ~</button>
         </div>
+        <h1 id="final">FSOCIETY</h1>
     </div>
 </body>
 </html>

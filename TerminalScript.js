@@ -7,7 +7,7 @@ setTimeout(()=>{
 function initialize() {
     escrever("FSOCIETY", "text");
     addParagrafo("text2");
-    escreverAtrasasdo("text2", 900, "ABRA O NOTEPAD EVERYREV0LUTION PARA RECEBER SUAS INSTRUÇÕES SOBRE A MISSÃO");
+    escreverAtrasasdo("text2", 900, "ABRA O NOTEPAD EVERYREV0LUTION PARA RECEBER SUAS INSTRUÇÕES");
     addInput();
     focar();
 }
@@ -21,10 +21,24 @@ function escrever(str, id) {
         document.getElementById(id).innerHTML += next;
     }, 100);
 }
+function escrever2(str, id) {
+    var char = str.split('').reverse();
+    var typer = setInterval(function () {
+        if (!char.length) return clearInterval(typer);
+        var next = char.pop();
+        document.getElementById(id).innerHTML += next;
+    }, 300);
+}
 // Escrever velocidade normal e delay
 function escreverAtrasasdo(id, tempo, texto) {
     let init = setInterval(function () {
         escrever(texto, id)
+        clearInterval(init)
+    }, tempo)
+}
+function escreverAtrasasdo2(id, tempo, texto) {
+    let init = setInterval(function () {
+        escrever2(texto, id)
         clearInterval(init)
     }, tempo)
 }
@@ -73,12 +87,7 @@ function addParagrafoErroCmd2() {
     let parent = document.getElementById("main2")
     parent.appendChild(newParagrafo);
 }
-function addParagrafoErroCmd3() {
-    let newParagrafo = document.createElement("p")
-    newParagrafo.className = "erro3";
-    let parent = document.getElementById("main3")
-    parent.appendChild(newParagrafo);
-}
+
 
 // Move as Janelas
 function dragCmd(elmnt) {
@@ -116,7 +125,7 @@ function dragCmd(elmnt) {
 }
 dragCmd(document.getElementById("cmd"));
 dragCmd(document.getElementById("cmd2"));
-dragCmd(document.getElementById("cmd3"));
+
 
 // minimiza cmd
 function minCmd() {
@@ -125,9 +134,7 @@ function minCmd() {
 function minCmd2(){
     document.getElementById("cmd2").style.display = "none"
 }
-function minCmd3(){
-    document.getElementById("cmd3").style.display = "none"
-}
+
 
 // maximiza cmd
 let maxiCmd = 0;
@@ -174,28 +181,7 @@ function maxCmd2(){
         maxiCmd2 = 0;
     }
 }
-let maxiCmd3 = 0;
-function maxCmd3(){
-    let cmd = document.getElementById("cmd3");
-    let main = document.getElementsByTagName("main")
-    if (maxiCmd3 == 0) {
-        cmd.style.height = "100%";
-        cmd.style.width = "100%";
-        cmd.style.borderRadius = 0;
-        cmd.style.top = 0;
-        cmd.style.left = 0;
-        main[4].style.height = "93%"
-        maxiCmd3 = 1;
-    } else if (maxiCmd3 == 1) {
-        cmd.style.height = "40%";
-        cmd.style.width = "35%";
-        cmd.style.borderRadius = "15px";
-        cmd.style.top = "10%";
-        cmd.style.left = "50%";
-        main[4].style.height = "87%"
-        maxiCmd3 = 0;
-    }
-}
+
 
 // Fecha cmd
 let cl= 0;
@@ -225,15 +211,7 @@ function closeCmd2(){
         cmd.style.left = "20%";
         limpar2();
 }
-function closeCmd3(){
-    let cmd = document.getElementById("cmd3");
-        cmd.style.display = "none"
-        maxiCmd2 = 1;
-        maxCmd3();
-        cmd.style.top = "58%";
-        cmd.style.left = "20%";
-        limpar3();
-}
+
 
 
 // Limpa cmd
@@ -259,17 +237,7 @@ function limpar2(){
         paragrafos2.pop()
     }
 }
-function limpar3(){
-    let main = document.getElementById("main3")
-    let limparParagrafos = main.querySelectorAll("p")
-    for (let i = 0; limparParagrafos[i]; i++) {
-        limparParagrafos[i].innerText = "";
-        limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
-    }
-    for (let i = 0; paragrafos[i]; i++){
-        paragrafos3.pop()
-    }
-}
+
 // Abre cmd
 function openCmd() {
     document.getElementById("cmd").style.display = "block";
@@ -304,17 +272,7 @@ function addInputCmd2(){
     parent.appendChild(newInput);
     document.getElementById("cmdInput2").focus();
 }
-function addInputCmd3(){
-    let newInput = document.createElement("input");
-    newInput.id = "cmdInput3"
-    newInput.type = "text"
-    newInput.autocomplete = "off";
-    newInput.spellcheck = "false"
-    newInput.style.height="auto";
-    let parent = document.getElementById("main3")
-    parent.appendChild(newInput);
-    document.getElementById("cmdInput3").focus();
-}
+
 function addLabelInput(id){
     let newDiv = document.createElement("div")
     newDiv.id=id+1;
@@ -347,6 +305,10 @@ function escolherCmds(){
         document.getElementById("cmds").style.display = "none"
         k=0
     }
+}
+function closeEscolher(){
+    document.getElementById("cmds").style.display = "none"
+    k=0
 }
 
 // Enter no Cmd e Chama todo as coisas do cmd
@@ -415,6 +377,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
         addInput();
     }
 })
+let continuar2 = 0
 let scriptName;
 let i2 = 0;
 let paragrafos2 = [];
@@ -436,13 +399,41 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
             if (cl > 0){
                 limpar2();
             }
-        }else if(textinput.value.includes("vim") && textinput.value.includes(".py")){
+        }else if(textinput.value.includes("vim") && textinput.value.includes(".py") && continuar2 == 0){
             let scriptName2 = textinput.value.split(" ")
-            let scriptName3 = scriptName2[1].split(".")
-            scriptName = scriptName3[0]
-            document.getElementById("cmd3").style.display="block"
-            addInputCmd3();
-        }   
+            scriptName = scriptName2[1]
+            limpar2()
+            continuar2++
+        }else if(textinput.value.includes("import") && textinput.value.includes("os") && continuar2 == 1){
+            continuar2++
+        }else if(textinput.value == "folder = './user/backup'" && continuar2 == 2){
+            continuar2++
+        }else if(textinput.value == "def GetRightFile(fileName):" && continuar2 == 3){
+            continuar2++
+        }else if(textinput.value =="for fileName in os.walk(folder)" && continuar2 ==4){
+            continuar2++
+        }else if(textinput.value == "if fileName === file.name" && continuar2 ==5){
+            continuar2++
+        }else if(textinput.value == "file_data = file.content" && continuar2==6){
+            continuar2++
+        }else if(textinput.value == "file_data to encrypt.payload" && continuar2 ==7){
+            continuar2++
+        }else if(textinput.value == "=>export payload to url = 192.168.6.66" && continuar2 == 8){
+            addParagrafoCmd2("text100001")
+            addParagrafoCmd2("text100002")
+            addParagrafoCmd2("text100003")
+            escrever("exporting payload...","text100001")
+            escreverAtrasasdo2("text100002", 2000 ,"....")
+            escreverAtrasasdo("text100003",3200,"payload exported.")
+            continuar2++
+        }else if(textinput.value == "server.quit" && continuar2 == 9){
+            closeNotepad();
+            closeNotepad2();
+            closeCmd2();
+            closeCmd()
+            document.getElementById("wallpaper").style.backgroundImage = "url()"
+            document.getElementById("final").style.display = "block"
+        }
         else {
             addParagrafoErroCmd2()
             let erro = document.getElementsByClassName("erro2")
@@ -453,42 +444,10 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
 }
 })
 
-let i3 = 0;
-let paragrafos3 = [];
-document.getElementById("main3").addEventListener("keydown", (e)=>{
-    if(e.key == "Enter" && document.getElementById("cmdInput3").value != ""){
-        let textinput = document.getElementById("cmdInput3")
-        let texto = textinput.value;
-        textinput.style.display = "none";
-        i3++;
-        paragrafos3.push(i);
-        let newParagrafo = document.createElement("p");
-        newParagrafo.id = `inputTexto${paragrafos.length}`
-        newParagrafo.className = "texto"
-        newParagrafo.innerHTML = texto;
-        document.getElementById("main3").appendChild(newParagrafo);
-        let inputs = document.querySelector("#cmdInput3")
-        inputs.parentNode.removeChild(inputs);
-        if (textinput.value == "clear"){
-            if (cl > 0){
-                limpar3();
-            }
-        }else{
-            addParagrafoErroCmd3()
-            let erro = document.getElementsByClassName("erro3")
-            let tamanho = erro.length - 1;
-            erro[tamanho].innerHTML = "Comando Inválido"
-        }
-        addInputCmd3();
-}
-})
 
 document.getElementById("main").addEventListener("click", function (){
     document.getElementById("cmdInput").focus();
 })
 document.getElementById("main2").addEventListener("click", function (){
     document.getElementById("cmdInput2").focus();
-})
-document.getElementById("main3").addEventListener("click", function (){
-    document.getElementById("cmdInput3").focus();
 })
