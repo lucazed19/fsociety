@@ -329,6 +329,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
                 setTimeout(()=>{
                     document.getElementById("cmd2").style.display = "block"
                     document.getElementsByClassName("cmds")[1].style.display = "flex"
+                    document.getElementById("wallpaper").style.backgroundImage = "url(/images/bgd-kali-2.jpg)"
                     addInputCmd2();
                 },3120)
             },2500)
