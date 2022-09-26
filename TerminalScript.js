@@ -301,7 +301,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
             addParagrafo("text6")
             escreverRapidoAtr("text6", 450,"password:")
             continuar++;
-        } else if(textinput.value == String.raw`exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec('bruteforce.exe')=>/\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec("bruteforce.exe")=>/\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk`&& continuar == 1){
+        } else if(textinput.value == String.raw`exec('bruteforce.exe')=> /\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec('bruteforce.exe')=>/\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec("bruteforce.exe")=>/\/([a-zA-Z-0-9]+).apk` || textinput.value == String.raw`exec("bruteforce.exe")=> /\/([a-zA-Z-0-9]+).apk` && continuar == 1){
             addParagrafo("text7")
             escreverRapido("username found - dolorezHaze","text7")
             addParagrafo("text8")
@@ -318,7 +318,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
             },2500)
             continuar++;
         }
-        
+
         else {
             addParagrafoErro()
             let erro = document.getElementsByClassName("erro")
