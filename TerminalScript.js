@@ -330,7 +330,12 @@ document.getElementById("main").addEventListener("keydown", function (e){
                     document.getElementById("cmd2").style.display = "block"
                     document.getElementsByClassName("cmds")[1].style.display = "flex"
                     document.getElementById("wallpaper").style.backgroundImage = "url(/images/bgd-kali-2.jpg)"
-                    addInputCmd2();
+                    addParagrafoCmd2("text2001")
+                    escrever("VOCÊ ESTÁ DENTRO DO SERVIDOR!","text2001")
+                    addParagrafoCmd2("text2002")
+                    escreverAtrasasdo("text2002",2900, "ESCREVA O SCRIPT QUE ENCONTRARÁ OS ARQUIVOS NECESSÁRIOS E OS LEVARÁ ATÉ UM SERVIDOR SEGURO!")
+                    addParagrafoCmd2("text2003")
+                    escreverRapidoAtr("text2003", 11900,"ABRA O ARQUIVO startsW1thSome0ne PARA MAIS INSTRUÇÕES")
                 },3120)
             },2500)
             continuar++;
