@@ -89,6 +89,18 @@ body{
     height: 40%;
 }
 
+#cmd3{
+    background-color: rgba(50, 50, 50, 0.9);
+    width: 35%;
+    height: 50%;
+    display: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    z-index: 0;
+}
+
 #main2{
     color: white;
     font-family: monospace;
@@ -96,7 +108,7 @@ body{
     margin: 1px 10px;
 }
 
-#cmdHeader, #cmd2Header{
+#cmdHeader, #cmd2Header, #cmd3Header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -148,7 +160,7 @@ main::-webkit-scrollbar{
     display: none;
 }
 
-#cmdInput, #cmdInput2{
+#cmdInput, #cmdInput2, #cmdInput3{
     box-sizing: border-box;
     width: 98%;
     height: auto;
@@ -172,7 +184,7 @@ main::-webkit-scrollbar{
     font-size: 15px;
 }
 
-.erro, label, .erro2{
+.erro, label, .erro2, .erro3{
     font-family: monospace;
     font-size: 15px;
     color: white;

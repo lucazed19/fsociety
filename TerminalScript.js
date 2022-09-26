@@ -73,6 +73,12 @@ function addParagrafoErroCmd2() {
     let parent = document.getElementById("main2")
     parent.appendChild(newParagrafo);
 }
+function addParagrafoErroCmd3() {
+    let newParagrafo = document.createElement("p")
+    newParagrafo.className = "erro3";
+    let parent = document.getElementById("main3")
+    parent.appendChild(newParagrafo);
+}
 
 // Move as Janelas
 function dragCmd(elmnt) {
@@ -110,6 +116,7 @@ function dragCmd(elmnt) {
 }
 dragCmd(document.getElementById("cmd"));
 dragCmd(document.getElementById("cmd2"));
+dragCmd(document.getElementById("cmd3"));
 
 // minimiza cmd
 function minCmd() {
@@ -117,6 +124,9 @@ function minCmd() {
 }
 function minCmd2(){
     document.getElementById("cmd2").style.display = "none"
+}
+function minCmd3(){
+    document.getElementById("cmd3").style.display = "none"
 }
 
 // maximiza cmd
@@ -164,6 +174,28 @@ function maxCmd2(){
         maxiCmd2 = 0;
     }
 }
+let maxiCmd3 = 0;
+function maxCmd3(){
+    let cmd = document.getElementById("cmd3");
+    let main = document.getElementsByTagName("main")
+    if (maxiCmd3 == 0) {
+        cmd.style.height = "100%";
+        cmd.style.width = "100%";
+        cmd.style.borderRadius = 0;
+        cmd.style.top = 0;
+        cmd.style.left = 0;
+        main[4].style.height = "93%"
+        maxiCmd3 = 1;
+    } else if (maxiCmd3 == 1) {
+        cmd.style.height = "40%";
+        cmd.style.width = "35%";
+        cmd.style.borderRadius = "15px";
+        cmd.style.top = "10%";
+        cmd.style.left = "50%";
+        main[4].style.height = "87%"
+        maxiCmd3 = 0;
+    }
+}
 
 // Fecha cmd
 let cl= 0;
@@ -193,6 +225,16 @@ function closeCmd2(){
         cmd.style.left = "20%";
         limpar2();
 }
+function closeCmd3(){
+    let cmd = document.getElementById("cmd3");
+        cmd.style.display = "none"
+        maxiCmd2 = 1;
+        maxCmd3();
+        cmd.style.top = "58%";
+        cmd.style.left = "20%";
+        limpar3();
+}
+
 
 // Limpa cmd
 function limpar(){
@@ -215,6 +257,17 @@ function limpar2(){
     }
     for (let i = 0; paragrafos[i]; i++){
         paragrafos2.pop()
+    }
+}
+function limpar3(){
+    let main = document.getElementById("main3")
+    let limparParagrafos = main.querySelectorAll("p")
+    for (let i = 0; limparParagrafos[i]; i++) {
+        limparParagrafos[i].innerText = "";
+        limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
+    }
+    for (let i = 0; paragrafos[i]; i++){
+        paragrafos3.pop()
     }
 }
 // Abre cmd
@@ -250,6 +303,17 @@ function addInputCmd2(){
     let parent = document.getElementById("main2")
     parent.appendChild(newInput);
     document.getElementById("cmdInput2").focus();
+}
+function addInputCmd3(){
+    let newInput = document.createElement("input");
+    newInput.id = "cmdInput3"
+    newInput.type = "text"
+    newInput.autocomplete = "off";
+    newInput.spellcheck = "false"
+    newInput.style.height="auto";
+    let parent = document.getElementById("main3")
+    parent.appendChild(newInput);
+    document.getElementById("cmdInput3").focus();
 }
 function addLabelInput(id){
     let newDiv = document.createElement("div")
@@ -376,7 +440,8 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
             let scriptName2 = textinput.value.split(" ")
             let scriptName3 = scriptName2[1].split(".")
             scriptName = scriptName3[0]
-            
+            document.getElementById("cmd3").style.display="block"
+            addInputCmd3();
         }   
         else {
             addParagrafoErroCmd2()
@@ -388,9 +453,42 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
 }
 })
 
+let i3 = 0;
+let paragrafos3 = [];
+document.getElementById("main3").addEventListener("keydown", (e)=>{
+    if(e.key == "Enter" && document.getElementById("cmdInput3").value != ""){
+        let textinput = document.getElementById("cmdInput3")
+        let texto = textinput.value;
+        textinput.style.display = "none";
+        i3++;
+        paragrafos3.push(i);
+        let newParagrafo = document.createElement("p");
+        newParagrafo.id = `inputTexto${paragrafos.length}`
+        newParagrafo.className = "texto"
+        newParagrafo.innerHTML = texto;
+        document.getElementById("main3").appendChild(newParagrafo);
+        let inputs = document.querySelector("#cmdInput3")
+        inputs.parentNode.removeChild(inputs);
+        if (textinput.value == "clear"){
+            if (cl > 0){
+                limpar3();
+            }
+        }else{
+            addParagrafoErroCmd3()
+            let erro = document.getElementsByClassName("erro3")
+            let tamanho = erro.length - 1;
+            erro[tamanho].innerHTML = "Comando Inválido"
+        }
+        addInputCmd3();
+}
+})
+
 document.getElementById("main").addEventListener("click", function (){
     document.getElementById("cmdInput").focus();
 })
 document.getElementById("main2").addEventListener("click", function (){
     document.getElementById("cmdInput2").focus();
+})
+document.getElementById("main3").addEventListener("click", function (){
+    document.getElementById("cmdInput3").focus();
 })
