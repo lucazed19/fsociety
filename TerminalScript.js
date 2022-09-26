@@ -334,9 +334,9 @@ document.getElementById("main").addEventListener("keydown", function (e){
                     addParagrafoCmd2("text2001")
                     escrever("VOCÊ ESTÁ DENTRO DO SERVIDOR!","text2001")
                     addParagrafoCmd2("text2002")
-                    escreverAtrasasdo("text2002",2900, "ESCREVA O SCRIPT QUE ENCONTRARÁ OS ARQUIVOS NECESSÁRIOS E OS LEVARÁ ATÉ UM SERVIDOR SEGURO!")
+                    escreverRapidoAtr("text2002",2900, "ESCREVA O SCRIPT QUE ENCONTRARÁ OS ARQUIVOS NECESSÁRIOS E OS LEVARÁ ATÉ UM SERVIDOR SEGURO!")
                     addParagrafoCmd2("text2003")
-                    escreverRapidoAtr("text2003", 11900,"ABRA O ARQUIVO startsW1thSome0ne PARA MAIS INSTRUÇÕES")
+                    escreverRapidoAtr("text2003", 3810,"ABRA O ARQUIVO STARTSW1THSOME0NE PARA MAIS INSTRUÇÕES")
                 },3120)
             },2500)
             continuar++;

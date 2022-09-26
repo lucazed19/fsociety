@@ -41,7 +41,7 @@ body{
 }
 
 #cmds{
-    width: 7%;
+    width: 9%;
     height: auto;
     background-color: rgb(40, 40, 40);
     position: fixed;
@@ -183,7 +183,7 @@ main::-webkit-scrollbar{
     width: 2.8%;
     height: 6%;
     left: 2.4%;
-    top: 43%;
+    top: 43.5%;
     background-color: transparent;
     position: fixed;
     cursor: pointer;
@@ -195,7 +195,7 @@ main::-webkit-scrollbar{
     width: 2.8%;
     height: 6%;
     left: 2.4%;
-    top: 54.3%;
+    top: 56.3%;
     background-color: transparent;
     position: fixed;
     cursor: pointer;
@@ -206,7 +206,7 @@ main::-webkit-scrollbar{
     width: 17%;
     background-color: rgba(20, 20, 20, 0.89);
     position: fixed;
-    top: 49%;
+    top: 50.5%;
     left: 0.1%;
     border-radius: 5px;
     display: none;
@@ -222,7 +222,7 @@ main::-webkit-scrollbar{
 }
 
 .infosNotepad2{
-    top: 60.3%;
+    top: 63.1%;
 }
 
 #notepad, #notepad2{
