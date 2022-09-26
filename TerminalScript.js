@@ -351,7 +351,7 @@ document.getElementById("main").addEventListener("keydown", function (e){
         addInput();
     }
 })
-
+let scriptName;
 let i2 = 0;
 let paragrafos2 = [];
 document.getElementById("main2").addEventListener("keydown", (e)=>{
@@ -372,9 +372,12 @@ document.getElementById("main2").addEventListener("keydown", (e)=>{
             if (cl > 0){
                 limpar2();
             }
-        }else if(textinput.value.includes("vim")){
-
-        }
+        }else if(textinput.value.includes("vim") && textinput.value.includes(".py")){
+            let scriptName2 = textinput.value.split(" ")
+            let scriptName3 = scriptName2[1].split(".")
+            scriptName = scriptName3[0]
+            
+        }   
         else {
             addParagrafoErroCmd2()
             let erro = document.getElementsByClassName("erro2")
