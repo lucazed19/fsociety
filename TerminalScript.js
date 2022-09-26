@@ -12,6 +12,7 @@ function initialize() {
     focar();
 }
 
+//Escrever velocidade normal 
 function escrever(str, id) {
     var char = str.split('').reverse();
     var typer = setInterval(function () {
@@ -20,7 +21,15 @@ function escrever(str, id) {
         document.getElementById(id).innerHTML += next;
     }, 100);
 }
+// Escrever velocidade normal e delay
+function escreverAtrasasdo(id, tempo, texto) {
+    let init = setInterval(function () {
+        escrever(texto, id)
+        clearInterval(init)
+    }, tempo)
+}
 
+// Escrever velocidade rapida
 function escreverRapido(str, id) {
     var char = str.split('').reverse();
     var typer = setInterval(function () {
@@ -29,6 +38,7 @@ function escreverRapido(str, id) {
         document.getElementById(id).innerHTML += next;
     }, 10);
 }
+// Escrever velocidade rapida e delay
 function escreverRapidoAtr(id, tempo, texto) {
     let init = setInterval(function () {
         escreverRapido(texto, id)
@@ -36,7 +46,7 @@ function escreverRapidoAtr(id, tempo, texto) {
     }, tempo)
 }
 
-
+// Adiciona Parágrafos
 function addParagrafo(id) {
     let newParagrafo = document.createElement("p")
     newParagrafo.id = id;
@@ -51,13 +61,7 @@ function addParagrafoErro() {
     parent.appendChild(newParagrafo);
 }
 
-function escreverAtrasasdo(id, tempo, texto) {
-    let init = setInterval(function () {
-        escrever(texto, id)
-        clearInterval(init)
-    }, tempo)
-}
-
+// Move as Janelas
 function dragCmd(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "Header")) {
@@ -93,11 +97,13 @@ function dragCmd(elmnt) {
 }
 dragCmd(document.getElementById("cmd"));
 
+// minimiza cmd
 function minCmd() {
     document.getElementById("cmd").style.display = "none"
     document.getElementById("cmd2").style.display = "none"
 }
 
+// maximiza cmd
 let maxiCmd = 0;
 function maxCmd() {
     let cmd = document.getElementById("cmd");
@@ -121,6 +127,7 @@ function maxCmd() {
     }
 }
 
+// Fecha cmd
 let cl= 0;
 function closeCmd() {
     if (cl > 0){
@@ -133,7 +140,6 @@ function closeCmd() {
         limpar();
     } else if (document.getElementById("notepad").style.display == "none" && cl == 0){}
 }
-
 function autoClose(){
     if(cl == 0){
         cl++
@@ -141,23 +147,35 @@ function autoClose(){
     }
 }
 
+// Limpa cmd
+function limpar(){
+    let limparParagrafos = document.querySelectorAll("p");
+    for (let i = 0; limparParagrafos[i]; i++) {
+        limparParagrafos[i].innerText = "";
+        limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
+    }
+    for (let i = 0; paragrafos[i]; i++){
+        paragrafos.pop()
+    }
+}
+// Abre cmd
 function openCmd() {
     document.getElementById("cmd").style.display = "block";
     document.getElementById("cmdInput").focus();
 }
 
-
+// Adiciona input
 function addInput(){
     let newInput = document.createElement("input");
     newInput.id = "cmdInput"
     newInput.type = "text"
     newInput.autocomplete = "off";
+    newInput.spellcheck = "false"
     newInput.style.height="auto";
     let parent = document.getElementById("main")
     parent.appendChild(newInput);
     document.getElementById("cmdInput").focus();
 }
-
 function addLabelInput(id){
     let newDiv = document.createElement("div")
     newDiv.id=id+1;
@@ -181,18 +199,7 @@ function addLabelInput(id){
     document.getElementById("cmdInput").focus();
 }
 
-
-function limpar(){
-    let limparParagrafos = document.querySelectorAll("p");
-    for (let i = 0; limparParagrafos[i]; i++) {
-        limparParagrafos[i].innerText = "";
-        limparParagrafos[i].parentNode.removeChild(limparParagrafos[i])
-    }
-    for (let i = 0; paragrafos[i]; i++){
-        paragrafos.pop()
-    }
-}
-
+// Enter no Cmd e Chama todo as coisas do cmd
 let i = 0;
 let paragrafos = [];
 let continuar = 0;
